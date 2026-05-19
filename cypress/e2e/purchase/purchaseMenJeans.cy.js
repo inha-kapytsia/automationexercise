@@ -2,6 +2,8 @@
 
 describe("Purchase Men Jeans", () => {
   it("Open home page", () => {
+    const productName = "Grunt Blue Slim Fit Jeans";
+
     cy.visit("/");
 
     cy.url().should("eq", Cypress.config().baseUrl + "/");
@@ -23,7 +25,7 @@ describe("Purchase Men Jeans", () => {
 
     cy.get(".single-products")
       .find("p")
-      .contains("Grunt Blue Slim Fit Jeans")
+      .contains(productName)
       .should("be.visible")
       .parent()
       .parent()
@@ -37,7 +39,7 @@ describe("Purchase Men Jeans", () => {
 
     cy.get(".product-information")
       .find("h2")
-      .contains("Grunt Blue Slim Fit Jeans")
+      .contains(productName)
       .should("be.visible");
 
     cy.get("button").contains("Add to cart").should("be.visible").click();
@@ -56,7 +58,7 @@ describe("Purchase Men Jeans", () => {
 
     cy.get(".breadcrumbs").find(".active").contains("Shopping Cart");
 
-    cy.get("h4").contains("Grunt Blue Slim Fit Jeans").should("be.visible");
+    cy.get("h4").contains(productName).should("be.visible");
 
     cy.get(".cart_quantity").find("button").contains("1").should("be.visible");
   });
