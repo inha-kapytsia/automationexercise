@@ -10,7 +10,12 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add("consoleLog", (somethingToLog) => {
+  cy.log("----------------");
+  cy.log(somethingToLog);
+
+  cy.log("----------------");
+});
 //
 //
 // -- This is a child command --
