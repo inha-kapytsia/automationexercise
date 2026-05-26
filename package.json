@@ -11,6 +11,10 @@
     "cy_run": "npx cypress run --e2e --browser chrome"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.4.0",
     "cypress": "^15.15.0"
+  },
+  "dependencies": {
+    "moment": "^2.30.1"
   }
 }

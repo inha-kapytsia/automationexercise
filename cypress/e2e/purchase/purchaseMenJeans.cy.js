@@ -1,65 +1,34 @@
 /// <reference types="cypress" />
 
+import moment from "moment";
+import HomePage from "../../POM/Page/homePage";
+import CategoryList from "../../POM/Component/categoryList";
+import MenProducts from "../../POM/Page/menProducts";
+import ProductPage from "../../POM/Page/productPage";
+import ShoppingCart from "../../POM/Page/shoppingCart";
+
 describe("Purchase Men Jeans", () => {
   it("Open home page", () => {
     const productName = "Grunt Blue Slim Fit Jeans";
 
-    cy.visit("/");
+    HomePage.openHomePage();
 
-    cy.url().should("eq", Cypress.config().baseUrl + "/");
+    CategoryList.clickOnMenCategory().clickOnJeansSubCategory();
 
-    cy.get('[src="/static/images/home/logo.png"]').should("be.visible");
+    MenProducts.verifyThatMenProductsPageIsOpened()
+      .selectSpecificProduct(productName)
+      .verifyThatSpecificProductPageIsOpened(productName);
 
-    cy.get('[href="#Women"]').should("be.visible");
+    ProductPage.clickOnAddToCartButton()
+      .verifyThatSuccessModalWindowIsOpened()
+      .clickOnViewCartLink();
 
-    cy.get("h4").find("a").contains("Men").should("be.visible").click();
+    ShoppingCart.verifyThatShoppingCartPageIsOpened()
+      .verifyThatCorrectProductIsAdded(productName)
+      .verifyThatQuantityIsCorrect();
 
-    cy.get("li").find("a").contains("Jeans").should("be.visible").click();
+    const number = moment().unix().toString();
 
-    cy.url().should(
-      "include",
-      Cypress.config().baseUrl + "/category_products/",
-    );
-
-    cy.get("h2").contains("Men - Jeans Products").should("be.visible");
-
-    cy.get(".single-products")
-      .find("p")
-      .contains(productName)
-      .should("be.visible")
-      .parent()
-      .parent()
-      .next()
-      .find("a")
-      .contains("View Product")
-      .should("be.visible")
-      .click();
-
-    cy.url().should("include", Cypress.config().baseUrl + "/product_details/");
-
-    cy.get(".product-information")
-      .find("h2")
-      .contains(productName)
-      .should("be.visible");
-
-    cy.get("button").contains("Add to cart").should("be.visible").click();
-
-    cy.get(".modal-content")
-      .should("be.visible")
-      .contains("Added!")
-      .should("be.visible");
-
-    cy.get(".modal-content")
-      .find('[href="/view_cart"]')
-      .should("be.visible")
-      .click();
-
-    cy.url().should("include", Cypress.config().baseUrl + "/view_cart");
-
-    cy.get(".breadcrumbs").find(".active").contains("Shopping Cart");
-
-    cy.get("h4").contains(productName).should("be.visible");
-
-    cy.get(".cart_quantity").find("button").contains("1").should("be.visible");
+    console.log(number);
   });
 });

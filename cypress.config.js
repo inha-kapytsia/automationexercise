@@ -5,7 +5,7 @@ module.exports = defineConfig({
   watchForFileChanges: false,
   viewportWidth: 1440,
   viewportHeight: 900,
-  pageLoadTimeout: 10000,
+  pageLoadTimeout: 30000,
 
   e2e: {
     baseUrl: "https://automationexercise.com",
