@@ -1,16 +1,19 @@
 class MenProducts {
   verifyThatMenProductsPageIsOpened() {
+    cy.step("Verify that Men Products Page is opened");
     cy.url().should(
       "include",
       Cypress.config().baseUrl + "/category_products/",
     );
 
+    cy.step("Verify that title is correct");
     cy.get("h2").contains("Men - Jeans Products").should("be.visible");
 
     return this;
   }
 
   selectSpecificProduct(productName) {
+    cy.step("Select specific Product");
     cy.get(".single-products")
       .find("p")
       .contains(productName)
@@ -27,8 +30,10 @@ class MenProducts {
   }
 
   verifyThatSpecificProductPageIsOpened(productName) {
+    cy.step("Verify that specific Product Page is opened");
     cy.url().should("include", Cypress.config().baseUrl + "/product_details/");
 
+    cy.step("Verify that Product is correct");
     cy.get(".product-information")
       .find("h2")
       .contains(productName)

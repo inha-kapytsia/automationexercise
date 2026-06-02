@@ -14,4 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";
+import "cypress-plugin-steps";
+import registerCypressGrep from "@bahmutov/cy-grep/src/support";
+registerCypressGrep();

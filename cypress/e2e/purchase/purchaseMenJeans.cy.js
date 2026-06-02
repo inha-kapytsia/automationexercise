@@ -6,29 +6,28 @@ import CategoryList from "../../POM/Component/categoryList";
 import MenProducts from "../../POM/Page/menProducts";
 import ProductPage from "../../POM/Page/productPage";
 import ShoppingCart from "../../POM/Page/shoppingCart";
+import Data from "../../support/data";
 
-describe("Purchase Men Jeans", () => {
-  it("Open home page", () => {
-    const productName = "Grunt Blue Slim Fit Jeans";
+describe(
+  "Purchase Men Jeans",
+  { tags: ["@purchase", "@menProducts", "@smoke", "@current"] },
+  () => {
+    it("Open home page", () => {
+      HomePage.openHomePage();
 
-    HomePage.openHomePage();
+      CategoryList.clickOnMenCategory().clickOnJeansSubCategory();
 
-    CategoryList.clickOnMenCategory().clickOnJeansSubCategory();
+      MenProducts.verifyThatMenProductsPageIsOpened()
+        .selectSpecificProduct(Data.menProductName)
+        .verifyThatSpecificProductPageIsOpened(Data.menProductName);
 
-    MenProducts.verifyThatMenProductsPageIsOpened()
-      .selectSpecificProduct(productName)
-      .verifyThatSpecificProductPageIsOpened(productName);
+      ProductPage.clickOnAddToCartButton()
+        .verifyThatSuccessModalWindowIsOpened()
+        .clickOnViewCartLink();
 
-    ProductPage.clickOnAddToCartButton()
-      .verifyThatSuccessModalWindowIsOpened()
-      .clickOnViewCartLink();
-
-    ShoppingCart.verifyThatShoppingCartPageIsOpened()
-      .verifyThatCorrectProductIsAdded(productName)
-      .verifyThatQuantityIsCorrect();
-
-    const number = moment().unix().toString();
-
-    console.log(number);
-  });
-});
+      ShoppingCart.verifyThatShoppingCartPageIsOpened()
+        .verifyThatCorrectProductIsAdded(Data.menProductName)
+        .verifyThatQuantityIsCorrect();
+    });
+  },
+);
