@@ -8,13 +8,22 @@
   "main": "index.js",
   "scripts": {
     "cy_open": "npx cypress open --e2e --browser chrome",
-    "cy_run": "npx cypress run --e2e --browser chrome"
+    "cy_run": "npx cypress run --e2e --browser chrome",
+    "current": "npx cypress run --e2e --browser chrome --expose grepTags=@current",
+    "purchase": "npx cypress run --e2e --browser chrome --expose grepTags=@purchase",
+    "menProducts": "npx cypress run --e2e --browser chrome --expose grepTags=@menProducts",
+    "womenProducts": "npx cypress run --e2e --browser chrome --expose grepTags=@womenProducts",
+    "registration": "npx cypress run --e2e --browser chrome --headless --expose grepTags=@registration",
+    "login": "npx cypress run --e2e --browser chrome --expose grepTags=@login"
   },
   "devDependencies": {
+    "@bahmutov/cy-grep": "^3.0.4",
     "@faker-js/faker": "^10.4.0",
     "cypress": "^15.15.0"
   },
   "dependencies": {
+    "cypress-plugin-steps": "^1.2.1",
+    "dotenv": "^17.4.2",
     "moment": "^2.30.1"
   }
 }

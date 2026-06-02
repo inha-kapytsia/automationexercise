@@ -1,6 +1,9 @@
 import moment from "moment";
 import { faker } from "@faker-js/faker";
 class Data {
+  menProductName = "Grunt Blue Slim Fit Jeans";
+
+  womenProductName = "Sleeveless Dress";
   userFirstName = faker.person.firstName();
 
   userLastName = faker.person.lastName();
