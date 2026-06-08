@@ -1,9 +1,8 @@
 /// <reference types="cypress" />
-import HomePage from "../../POM/Page/homePage";
-import Header from "../../POM/Component/header";
-import LoginPage from "../../POM/Page/loginPage";
-import Data from "../../support/data";
-import User from "../../fixtures/users/men.json";
+import HomePage from "../../../POM/Page/homePage";
+import Header from "../../../POM/Component/header";
+import LoginPage from "../../../POM/Page/loginPage";
+import Data from "../../../support/data";
 
 describe("Login to account", { tags: ["@login", "@smoke"] }, () => {
   it("Login to account", () => {
