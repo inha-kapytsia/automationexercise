@@ -10,11 +10,32 @@
 //
 //
 // -- This is a parent command --
+
+import HomePage from "../POM/Page/homePage";
+import Header from "../POM/Component/header";
+import LoginPage from "../POM/Page/loginPage";
+
 Cypress.Commands.add("consoleLog", (somethingToLog) => {
   cy.log("----------------");
   cy.log(somethingToLog);
 
   cy.log("----------------");
+});
+
+Cypress.Commands.add("loginAsUser", () => {
+  HomePage.openHomePage();
+
+  Header.clickLoginLink();
+
+  cy.env(["EMAIL"]).then(({ EMAIL }) => {
+    LoginPage.enterUserEmailInTheLoginForm(EMAIL);
+  });
+
+  cy.env(["PASSWORD"]).then(({ PASSWORD }) => {
+    LoginPage.enterUserPasswordInTheLoginForm(PASSWORD);
+  });
+
+  LoginPage.clickOnLoginButton();
 });
 //
 //

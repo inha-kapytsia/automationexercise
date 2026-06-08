@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
-import HomePage from "../../POM/Page/homePage";
-import Header from "../../POM/Component/header";
-import LoginPage from "../../POM/Page/loginPage";
-import SignUpPage from "../../POM/Page/signUpPage";
-import Data from "../../support/data";
+import HomePage from "../../../POM/Page/homePage";
+import Header from "../../../POM/Component/header";
+import LoginPage from "../../../POM/Page/loginPage";
+import SignUpPage from "../../../POM/Page/signUpPage";
+import Data from "../../../support/data";
 
 describe("Registration", () => {
   it(

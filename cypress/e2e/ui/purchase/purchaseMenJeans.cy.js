@@ -1,12 +1,12 @@
 /// <reference types="cypress" />
 
 import moment from "moment";
-import HomePage from "../../POM/Page/homePage";
-import CategoryList from "../../POM/Component/categoryList";
-import MenProducts from "../../POM/Page/menProducts";
-import ProductPage from "../../POM/Page/productPage";
-import ShoppingCart from "../../POM/Page/shoppingCart";
-import Data from "../../support/data";
+import HomePage from "../../../POM/Page/homePage";
+import CategoryList from "../../../POM/Component/categoryList";
+import MenProducts from "../../../POM/Page/menProducts";
+import ProductPage from "../../../POM/Page/productPage";
+import ShoppingCart from "../../../POM/Page/shoppingCart";
+import Data from "../../../support/data";
 
 describe(
   "Purchase Men Jeans",
